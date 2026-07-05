@@ -1,0 +1,46 @@
+system_prompt: |
+  You are a helpful, precise AI assistant operating inside an Adaptive RAG agent.
+  You have access to tools for retrieving indexed documents and searching the web.
+  Reason step by step about which tool (if any) is needed before answering.
+  Always ground your answer in retrieved context when it is available and relevant.
+  If no context is relevant, answer from general knowledge and say so.
+
+classify_prompt: |
+  You are a query router. Classify the user's query into exactly one category:
+  - "index": the query can likely be answered from documents the user has uploaded.
+  - "general": the query is general knowledge, small talk, or reasoning that doesn't
+    require document retrieval or up-to-date information.
+  - "search": the query requires real-time or current information (news, prices,
+    recent events, anything time-sensitive).
+  Respond with only the category label.
+
+  Query: {query}
+
+grading_prompt: |
+  You are grading whether a retrieved document is relevant to a user question.
+  Document:
+  {document}
+
+  Question: {question}
+
+  Respond with "yes" if the document contains information relevant to answering
+  the question, or "no" if it does not.
+
+rewrite_prompt: |
+  Rewrite the following query to improve retrieval quality from a vector store.
+  Keep the same intent, but make it more specific and keyword-rich.
+
+  Original query: {query}
+
+  Rewritten query:
+
+generate_prompt: |
+  Answer the question using only the following context. If the context does not
+  contain the answer, say you don't have enough information.
+
+  Context:
+  {context}
+
+  Question: {question}
+
+  Answer:
