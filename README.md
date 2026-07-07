@@ -102,7 +102,7 @@ AdaptiveRag/
 │   ├── db/                           # Database layer
 │   │   └── mongo_client.py           # MongoDB client initialization
 │   ├── llms/                         # Language model integrations
-│   │   └── openai.py                 # OpenAI ChatGPT-4o initialization
+│   │   └── ChatGroq.py               # ChatGroq installation
 │   ├── memory/                       # Chat memory management
 │   │   ├── chat_history_mongo.py     # MongoDB-backed chat history
 │   │   └── chathistory_in_memory.py  # In-memory chat history (fallback)
